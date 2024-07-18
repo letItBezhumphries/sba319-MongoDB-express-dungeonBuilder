@@ -1,0 +1,6 @@
+div(class="monster-list-container")
+  h2(class="monster-list-header") Monsters Available to Add to Any Dungeon 
+  table(class="monsters-list")
+    for monster in monsters
+      tr
+        button(class="monster-btn") monster.name

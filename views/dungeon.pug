@@ -1,0 +1,25 @@
+extends layouts/main-layout.pug
+
+block content_authenticatedNav
+  if authenticated
+    li(class='nav-link') 
+      a(href="/logout") Logout
+  else
+    li(class='nav-link') 
+      a(href="/login") Login  
+block content
+  section
+    if dungeon
+      div(class="dungeon-view")
+        table 
+          tbody 
+            tr(class="trow") 
+              td Dungeon Name:
+              td=dungeon.dungeon_name
+            tr(class="trow") 
+              td Size:
+              td=dungeon.size
+            tr(class="trow") 
+              td Monsters:
+              td for monster in dungeon.monsters
+                div=monster.name

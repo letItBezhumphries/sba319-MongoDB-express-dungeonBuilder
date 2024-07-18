@@ -1,0 +1,13 @@
+//- header.pug
+nav(class="navbar")
+    h1(class='nav-header') 
+        a(href="/" class='nav-link') D&D Dungeon Builder
+    ul
+        li(class="nav-link")
+            a(href="/api/characters") Characters 
+        li(class="nav-link")
+            a(href="/api/monsters") Monsters  
+        li(class="nav-link") 
+            a(href="/api/dungeons") Dungeons
+        block content_authenticatedNav
+    

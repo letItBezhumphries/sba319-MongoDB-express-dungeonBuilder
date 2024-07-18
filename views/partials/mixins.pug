@@ -1,0 +1,55 @@
+
+
+mixin user-form
+    form(action="/api/users", method="post" class!=attributes.class)
+        div(class="user-form")
+            input#username(type="text", name="username", placeholder="Username")
+            input#user-email(type="email", name="user-email", placeholder="Email Address")
+            input#user-password(type="password", name="user-password", placeholder="Password")
+            button(type="submit") Submit
+
+
+//- mixin character-form 
+//-     form(action="/characters", method="post" class!=attributes.class)
+//-         input#character-name(type="text", name="character_name", placeholder="Character name")
+//-         select#character-class
+//-           each classType in classTypes
+//-             option(value=classType.index) #{classType.name}
+//-         select#character-gender
+//-           each gender in genders 
+//-             option(value=gender.index) #{gender.type}
+//-         select#character-age 
+//-           while age < 112
+//-             option(value=age++)= #{age++}
+//-         button(type="submit") Submit
+
+
+//- mixin dungeon-form 
+//-     form(action="/dungeons", method="post" class!=attributes.class)
+//-         input#dungeon-name(type="text", name="dungeon_name", placeholder="What is your Dungeon called")        
+//-         select#dungeon-size 
+//-           each size in sizes 
+//-             option(value=size) #{size}
+//-         button(type="submit") Submit
+
+
+mixin monsters-list
+  div(class='monsters-list-container') 
+    for monster in monsters
+      include ./monster.pug 
+
+//- mixin users-list 
+//-   div(class='users-list-container')
+//-     for user in users 
+//-       include ./user.pug 
+
+//- mixin characters-list 
+//-   div(class='characters-list-container')
+//-     for character in characters 
+//-       include ./character.pug 
+
+//- mixin dungeons-list 
+//-   div(class='dungeons-list-container')
+//-     for dungeon in dungeons 
+//-       include ./dungeon.pug
+      

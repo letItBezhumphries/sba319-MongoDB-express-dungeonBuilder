@@ -1,0 +1,17 @@
+div(class="character-container")
+    img(class="character-image" src=character.img)
+    div(class="character-info")
+        h4(class="character-name") = character.name 
+        table: tbody 
+          tr(class="trow") 
+            td Sex: 
+            td = character.gender 
+          tr(class="trow")
+            td Class:
+            td = character.class_type 
+          tr(class="trow")
+            td Age: 
+            td = character.age 
+          tr(class="trow")
+            td Hit Points: 
+            td character.hit_points 

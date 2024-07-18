@@ -1,0 +1,32 @@
+extends layouts/main-layout.pug
+
+block content_authenticatedNav
+  if authenticated
+    li(class='nav-link') 
+      a(href="/logout") Logout
+  else
+    li(class='nav-link') 
+      a(href="/login") Login  
+block content
+  section
+    if character
+      div(class="character-view")
+        img(src=character.img, class="character-view-image")
+        table 
+          tbody 
+            tr(class="trow") 
+              td Name:
+              td=character.name
+            tr(class="trow") 
+              td Sex:
+              td=character.gender
+            tr(class="trow") 
+              td Class:
+              td=character.class_type
+            tr(class="trow") 
+              td Age:
+              td=character.age
+            tr(class="trow") 
+              td Hit Points:
+              td=character.hit_points
+            

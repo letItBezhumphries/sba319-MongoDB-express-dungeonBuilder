@@ -1,0 +1,86 @@
+const users = [
+  {
+    id: 'f57dfc7534b34f15b750ee11bbf3f520',
+    name: 'Mark Smitham',
+    username: 'Sonny.Zemlak16',
+    email: 'Fanny.Spinka@yahoo.com',
+    avatar: 'https://avatars.githubusercontent.com/u/83793096',
+    password: '0AxJ3WlBhVJ0BsJ',
+  },
+  {
+    id: 'f414a1c903014ff0b3aeed911f37d4b4',
+    name: 'Erika Block-Marquardt',
+    username: 'Peggie.Mohr',
+    email: 'Vernie13@gmail.com',
+    avatar: 'https://avatars.githubusercontent.com/u/29948735',
+    password: '4qD1ayY1kp9LzB1',
+  },
+  {
+    id: 'd20f715a96304c0f9a3b8722b052648a',
+    name: 'Pamela Effertz',
+    username: 'Raoul_Hoeger',
+    email: 'Madison_Sawayn@yahoo.com',
+    avatar: 'https://avatars.githubusercontent.com/u/71533358',
+    password: 'O4la7M1Z7LP6LwP',
+  },
+  {
+    id: '53b0b4a8da8643e2966e13ab91ef5428',
+    name: 'Francisco Brekke',
+    username: 'Elyssa.Kulas',
+    email: 'Immanuel.Kovacek@yahoo.com',
+    avatar: 'https://avatars.githubusercontent.com/u/49395754',
+    password: 'iA38CWRB5YzoIA_',
+  },
+  {
+    id: '85bee1f005694d2c851278c2523d15b4',
+    name: 'Oscar Yost',
+    username: 'Constantin.Fisher',
+    email: 'Carmine77@gmail.com',
+    avatar: 'https://avatars.githubusercontent.com/u/69150681',
+    password: 'b8qboVkdP1QN0iE',
+  },
+  {
+    id: 'd890f5e2b2c54aa6a3b1848e3dfc4722',
+    name: 'Edith Kshlerin-Rice',
+    username: 'Skyla_Cassin',
+    email: 'Antone_Bartell58@gmail.com',
+    avatar:
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1104.jpg',
+    password: 'lHSEbIkElHfUWPB',
+  },
+  {
+    id: 'fe0007f2bbe3438c9b8130f2b92adede',
+    name: 'Darren VonRueden',
+    username: 'Antonetta85',
+    email: 'Warren83@yahoo.com',
+    avatar:
+      'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/448.jpg',
+    password: 'jJoypjdHVL6hMMS',
+  },
+  {
+    id: 'b60651d629444b56bb025d4df571a6ee',
+    name: 'Edwin Fisher',
+    username: 'Blair67',
+    email: 'Jason_Conroy71@hotmail.com',
+    avatar: 'https://avatars.githubusercontent.com/u/79724408',
+    password: 'tTbwe14lENkBghM',
+  },
+  {
+    id: '4dae82ef90104b2eba57628e5efd7e21',
+    name: 'Mike Klein',
+    username: 'Ignatius48',
+    email: 'Blanche.Miller89@hotmail.com',
+    avatar: 'https://avatars.githubusercontent.com/u/93347124',
+    password: 'ecwGt8wqGP5ilLu',
+  },
+  {
+    id: 'a94d04c307144149adab97006a760d99',
+    name: 'Jack Sporer',
+    username: 'Melyna.Oberbrunner',
+    email: 'Pietro97@hotmail.com',
+    avatar: 'https://avatars.githubusercontent.com/u/34139166',
+    password: 'qRRccOpnMoMvzKO',
+  },
+];
+
+module.exports = users;

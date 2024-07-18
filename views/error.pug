@@ -1,0 +1,11 @@
+extends /layouts/main-layout.pug
+
+block content_authenticatedNav
+  if authenticated
+    li(class='nav-link') 
+      a(href="/logout") Logout
+  else
+    li(class='nav-link') 
+      a(href="/login") Login  
+block content 
+  p= alert 

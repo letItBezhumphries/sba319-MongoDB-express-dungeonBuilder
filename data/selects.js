@@ -1,0 +1,130 @@
+const characterClasses = [
+  { index: 'barbarian', name: 'Barbarian', url: '/api/classes/barbarian' },
+  { index: 'bard', name: 'Bard', url: '/api/classes/bard' },
+  { index: 'cleric', name: 'Cleric', url: '/api/classes/cleric' },
+  { index: 'druid', name: 'Druid', url: '/api/classes/druid' },
+  { index: 'fighter', name: 'Fighter', url: '/api/classes/fighter' },
+  { index: 'monk', name: 'Monk', url: '/api/classes/monk' },
+  { index: 'paladin', name: 'Paladin', url: '/api/classes/paladin' },
+  { index: 'ranger', name: 'Ranger', url: '/api/classes/ranger' },
+  { index: 'rogue', name: 'Rogue', url: '/api/classes/rogue' },
+  { index: 'sorcerer', name: 'Sorcerer', url: '/api/classes/sorcerer' },
+  { index: 'warlock', name: 'Warlock', url: '/api/classes/warlock' },
+  { index: 'wizard', name: 'Wizard', url: '/api/classes/wizard' },
+];
+
+const characterRaces = [
+  { index: 'dragonborn', name: 'Dragonborn', url: '/api/races/dragonborn' },
+  { index: 'dwarf', name: 'Dwarf', url: '/api/races/dwarf' },
+  { index: 'elf', name: 'Elf', url: '/api/races/elf' },
+  { index: 'gnome', name: 'Gnome', url: '/api/races/gnome' },
+  { index: 'half-elf', name: 'Half-Elf', url: '/api/races/half-elf' },
+  { index: 'half-orc', name: 'Half-Orc', url: '/api/races/half-orc' },
+  { index: 'halfling', name: 'Halfling', url: '/api/races/halfling' },
+  { index: 'human', name: 'Human', url: '/api/races/human' },
+  { index: 'tiefling', name: 'Tiefling', url: '/api/races/tiefling' },
+];
+
+const characterAlignments = [
+  {
+    index: 'chaotic-evil',
+    name: 'Chaotic Evil',
+    url: '/api/alignments/chaotic-evil',
+  },
+  {
+    index: 'chaotic-good',
+    name: 'Chaotic Good',
+    url: '/api/alignments/chaotic-good',
+  },
+  {
+    index: 'chaotic-neutral',
+    name: 'Chaotic Neutral',
+    url: '/api/alignments/chaotic-neutral',
+  },
+  {
+    index: 'lawful-evil',
+    name: 'Lawful Evil',
+    url: '/api/alignments/lawful-evil',
+  },
+  {
+    index: 'lawful-good',
+    name: 'Lawful Good',
+    url: '/api/alignments/lawful-good',
+  },
+  {
+    index: 'lawful-neutral',
+    name: 'Lawful Neutral',
+    url: '/api/alignments/lawful-neutral',
+  },
+  { index: 'neutral', name: 'Neutral', url: '/api/alignments/neutral' },
+  {
+    index: 'neutral-evil',
+    name: 'Neutral Evil',
+    url: '/api/alignments/neutral-evil',
+  },
+  {
+    index: 'neutral-good',
+    name: 'Neutral Good',
+    url: '/api/alignments/neutral-good',
+  },
+];
+
+const environments = [
+  'Underdark',
+  'Sewer',
+  'Caverns',
+  'Plane Of Water',
+  'Water',
+  'Temple',
+  'Desert',
+  'Urban',
+  'Hills',
+  'Settlement',
+  'Swamp',
+  'Coastal',
+  'Hill',
+  'Mountains',
+  'Astral Plane',
+  'Grassland',
+  'Ruin',
+  'Forest',
+  'Jungle',
+  'Mountain',
+  'Feywild',
+  'Tundra',
+  'Arctic',
+  'Plane Of Air',
+  'Laboratory',
+  'Ruins',
+  'Plane Of Fire',
+  'Abyss',
+  'Hell',
+  'Plane Of Earth',
+  'Any',
+  'Underwater',
+  'Shadowfell',
+  'Caves',
+  'Tomb',
+  'Ethereal Plane',
+];
+
+characterGenders = [
+  { index: 1, type: 'Gender variant' },
+  { index: 2, type: 'male' },
+  { index: 3, type: 'female' },
+  { index: 4, type: 'Trigender' },
+  { index: 5, type: 'Cis female' },
+  { index: 6, type: 'Gender nonconforming' },
+  { index: 7, type: 'Woman' },
+  { index: 8, type: 'Transexual man' },
+  { index: 9, type: 'Demi-woman' },
+  { index: 10, type: 'Gender fluid' },
+];
+
+module.exports = {
+  characterAlignments,
+  characterClasses,
+  characterRaces,
+  characterGenders,
+  environments,
+};

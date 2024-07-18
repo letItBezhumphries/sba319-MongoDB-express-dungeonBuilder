@@ -1,0 +1,27 @@
+{
+  "name": "sba-mongo-express-dungeon",
+  "version": "1.0.0",
+  "description": "D&D Dungeon builder application built with nodejs express mongoose and mongodb backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js -w",
+    "data:import": "node db/seeder",
+    "data:destroy": "node db/seeder -d"
+  },
+  "keywords": [],
+  "author": "Eric Humphries",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "axios": "^1.7.2",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.1",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

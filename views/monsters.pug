@@ -1,0 +1,26 @@
+extends layouts/main-layout.pug
+
+block content_authenticatedNav
+  if authenticated
+    li(class='nav-link') 
+      a(href="/logout") Logout
+  else
+    li(class='nav-link') 
+      a(href="/login") Login  
+block content
+  div#app
+  if monsters
+    div(class="monster-list-container")
+      h2(class="monster-list-header") Monsters  
+      table(class="monsters-list")
+        for monster in monsters
+          tr 
+            td
+              button(class="monster-btn")= monster.name
+  if monsterView  
+    div(class="monster-view")
+      img(class="monster-image" src=monsterView.img_main)
+      div(class="monster-info")
+        h3(class="name")= monsterView.name
+        p(class="type")= monsterView.size, monsterView.type, monsterView.alignment
+        p(class="monster-description")= monsterView.description
