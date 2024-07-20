@@ -1,4 +1,4 @@
-const monsters = require('./monsters');
+const monsters = require('./monsterSeed');
 const environments = require('./environments');
 const users = require('./users');
 const fs = require('fs');

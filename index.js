@@ -7,11 +7,9 @@ const PUBLIC_DIR = path.join(__dirname, 'public');
 const app = express();
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
-// const connectDB = require('./db/index');
-/* Pre database */
-const monsters = require('./data/monsters');
+const connectDB = require('./db/index');
 
-// connectDB();
+connectDB();
 
 /** define Routes */
 const userRoutes = require('./routes/users');

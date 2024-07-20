@@ -6,7 +6,7 @@ const connectDB = require('./index');
 // require in each of the necessary data files for each of the models
 // const characters = require('../data/characters');
 // const dungeons = require('../data/dungeons');
-const monsters = require('../data/monsters');
+const monsters = require('../data/monsterSeed');
 const users = require('../data/users');
 const { characterClasses } = require('../data/selects');
 
@@ -30,17 +30,21 @@ const insertDocuments = async function () {
     await Character.deleteMany();
     await Dungeon.deleteMany();
 
+    // store our inserted monsters and users in variables in order to add their ids to the Dungeon and Character Models
     const insertedMonsters = await Monster.insertMany(monsters);
+    console.log('monsters:', insertedMonsters);
     const insertedUsers = await User.insertMany(users);
 
     let charactersToInsert = [];
     let dungeonsToInsert = [];
 
+    // iterate over each user inserted into db
     insertedUsers.forEach((user, index) => {
-      //
+      // store counts for how many characters and dungeons to randomly create for each user
       let charactersCreatedTotal = faker.number.int({ min: 1, max: 3 });
       let dungeonsCreatedCount = faker.number.int({ min: 1, max: 3 });
 
+      // loop over the character count and push a created character to the charactersToInsert array
       while (charactersCreatedTotal > 0) {
         let tmpIdx = faker.number.int({
           min: 0,
@@ -60,6 +64,7 @@ const insertDocuments = async function () {
         charactersCreatedTotal--;
       }
 
+      // loop over the dungeons to create count and push a new dungeon into the dungeonsToInsert array
       while (dungeonsCreatedCount > 0) {
         dungeonsToInsert.push(
           createDungeonForInsertedUser(user, insertedMonsters)
@@ -71,10 +76,10 @@ const insertDocuments = async function () {
     const insertedCharacters = await Character.insertMany(charactersToInsert);
     const insertedDungeons = await Dungeon.insertMany(dungeonsToInsert);
 
-    console.log('insertedMonsters:', insertedMonsters);
-    console.log('insertedUsers:', insertedUsers);
-    console.log('insertedCharacters:', insertedCharacters);
-    console.log('insertedDungeons:', insertedDungeons);
+    // console.log('insertedMonsters:', insertedMonsters);
+    // console.log('insertedUsers:', insertedUsers);
+    // console.log('insertedCharacters:', insertedCharacters);
+    // console.log('insertedDungeons:', insertedDungeons);
     console.log('Data inserted!');
     process.exit();
   } catch (error) {

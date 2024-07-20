@@ -23,9 +23,9 @@ const MonsterSchema = new mongoose.Schema({
   alignment: {
     type: String,
   },
-  img: {
+  img_main: {
     type: String,
-    required: false,
+    required: true,
   },
   challenge_rating: {
     type: Number,

@@ -1,19 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/* pre-db monsters data */
-const monsters = require('../data/monsters');
+/* controller */
+const { getMonsters } = require('../controllers/monsterController');
 
-// @route    GET api/monsters
-// @desc     get all monsters
-// @access   Public
-router.get('/', (req, res) => {
-  res.status(200).render('monsters', {
-    page_title: 'Monsters available to add to your Dungeons',
-    authenticated: false,
-    monsters: monsters,
-    monsterView: monsters[0],
-  });
-});
+router.get('/', getMonsters);
 
 module.exports = router;

@@ -1,4 +1,16 @@
 const { faker } = require('@faker-js/faker');
+const axios = require('axios');
+
+const CLASSESURL = 'https://www.dnd5eapi.co/api/classes';
+const RACESURL = 'https://www.dnd5eapi.co/api/races';
+const APIURL = 'https://www.dnd5eapi.co';
+const API2URL = 'https://api.open5e.com/monsters/?limit=100';
+
+axios.default.defaults.headers.common = {
+  Accept: 'application/json',
+};
+
+axios.default.defaults.baseURL = 'https://www.dnd5eapi.co';
 
 const abilityKeys = [
   'strength',
@@ -72,4 +84,35 @@ function calculateHitPoints(characterObj) {
   // add your characters constitution modifier + character.hitdie
 }
 
-function calculateArmorClassRating() {}
+const adjustCharacterOptionsForSelectedClass = async (character, classType) => {
+  try {
+    const { data } = await axios.get(APIURL + `/api/classes/${classType}`);
+    console.log('the data for the class:', data);
+
+    for (option in data) {
+    }
+  } catch (error) {
+    console.error('error', error.message);
+  }
+};
+
+adjustCharacterOptionsForSelectedClass({}, 'barbarian');
+
+const discoverAPIendpoints = async (endpoint) => {
+  try {
+    const { data } = await axios.get(APIURL + endpoint);
+
+    const apiEndpoints = [];
+    const apiKeys = [];
+
+    for (key in data) {
+      apiKeys.push(key);
+      apiEndpoints.push(data[key]);
+    }
+    console.log('classResponse keys:', apiKeys, 'endpoints', apiEndpoints);
+  } catch (error) {
+    console.error('error', error.message);
+  }
+};
+
+// discoverAPIendpoints('/api/classes');
