@@ -1,14 +1,19 @@
-const { faker } = require('@faker-js/faker');
-
 /* require in Dungeon Model */
 const Dungeon = require('../models/Dungeon');
+const Monster = require('../models/Monster');
 
 // @route    GET api/dungeons
 // @desc     get all dungeons
 // @access   Public
 const getDungeons = async (req, res, next) => {
   try {
-    const dungeons = await Dungeon.find({});
+    const dungeons = await Dungeon.find()
+      .populate({ path: 'monsters' })
+      .populate('userId');
+
+    console.log('in getDungeons -> dungeons:', dungeons);
+
+    const monsters = await Monster.find({});
 
     if (dungeons) {
       res.status(200).render('dungeons', {

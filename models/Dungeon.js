@@ -36,7 +36,7 @@ const RowSchema = new mongoose.Schema({
 const DungeonSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: 'User',
   },
   dungeon_name: {
     type: String,
@@ -46,10 +46,12 @@ const DungeonSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  monsters: {
-    type: [mongoose.Schema.Types.ObjectId],
-    required: true,
-  },
+  monsters: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Monster',
+    },
+  ],
   // board: {
   //   type: [RowSchema],
   //   required: true,

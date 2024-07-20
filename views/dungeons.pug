@@ -8,12 +8,31 @@ block content_authenticatedNav
     li(class='nav-link') 
       a(href="/login") Login  
 block content
-  section
-    if dungeons
-      ul
-        for dungeon in dungeons
-          li=dungeon
-
+  div#app 
+  if dungeons
+    div(class="characters-list-container")
+      each dungeon in dungeons
+        div(class="dungeon-card")
+          tbody 
+            tr
+              td Dungeon Name: 
+              td #{ dungeon.dungeon_name }
+            tr 
+              td Id: 
+              td #{ dungeon.id }
+            tr 
+              td Size: 
+              td #{ dungeon.size }
+            tr
+              td Monsters:
+              td 
+                if dungeon.monsters 
+                  each monster in dungeon.monsters 
+                    div(class="monster-card-tiny")
+                      img(class="monster-card-tinyimg" src=monster.img_main)
+                      h4(class="monster-card-header")= monster.name
+ 
+                
 //- block content
 //-   p This content is from dungeons.pug!
 //- block more_content 
