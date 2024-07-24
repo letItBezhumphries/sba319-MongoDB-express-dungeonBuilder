@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const CharacterSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: 'User',
   },
   name: {
     type: String,
@@ -42,32 +42,30 @@ const CharacterSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
-  // abilities: {
-  //   strength: {
-  //     type: Number,
-  //     required: true,
-  //   },
-  //   dexterity: {
-  //     type: Number,
-  //     required: true,
-  //   },
-  //   constitution: {
-  //     type: Number,
-  //     required: true,
-  //   },
-  //   intelligence: {
-  //     type: Number,
-  //     required: true,
-  //   },
-  //   wisdom: {
-  //     type: Number,
-  //     required: true,
-  //   },
-  //   charisma: {
-  //     type: Number,
-  //     required: true,
-  //   },
-  // },
+  strength: {
+    type: Number,
+    // required: true,
+  },
+  dexterity: {
+    type: Number,
+    // required: true,
+  },
+  constitution: {
+    type: Number,
+    // required: true,
+  },
+  intelligence: {
+    type: Number,
+    // required: true,
+  },
+  wisdom: {
+    type: Number,
+    // required: true,
+  },
+  charisma: {
+    type: Number,
+    // required: true,
+  },
   // saving_throws: {
   //   strength: {
   //     type: String,
@@ -88,6 +86,7 @@ const CharacterSchema = new mongoose.Schema({
   //     type: String,
   //   },
   // },
+  // traits: []
   // skills: [
   //   {
   //     acrobatics: {

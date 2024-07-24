@@ -12,6 +12,9 @@ const {
 } = require('../controllers/userController');
 
 router.get('/', getUsers).post('/', createNewUser);
+router.get('/login', (req, res, next) => {
+  res.status(200).render('login');
+});
 router.get('/profile/:id', getUserById);
 router.put('/:id', updateUser).delete('/:id', deleteUser);
 

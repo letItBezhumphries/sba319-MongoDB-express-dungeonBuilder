@@ -3,11 +3,31 @@
 mixin user-form
     form(action="/api/users", method="post" class!=attributes.class)
         div(class="user-form")
+            input#name(type="text", name="name", placeholder="Your First and Last name")
             input#username(type="text", name="username", placeholder="Username")
             input#user-email(type="email", name="user-email", placeholder="Email Address")
             input#user-password(type="password", name="user-password", placeholder="Password")
             button(type="submit") Submit
 
+mixin signup-form
+    form(action="/api/auth", method="post" class!=attributes.class)
+      h2(class="signup-header") Sign Up Today For a Profile and Create D&D characters
+      div(class="signup-form")
+        input#name(type="text", name="name", placeholder="Your First and Last name")
+        input#username(type="text", name="username", placeholder="Username")
+        input#user-email(type="email", name="user-email", placeholder="Email Address")
+        input#user-password(type="password", name="user-password", placeholder="Password")
+        button(type="submit") Submit
+
+mixin signin-form
+    form(action="/api/auth/me", method="post" class!=attributes.class)
+      h2(class="signup-header") Sign in to your Profile
+      div(class="signup-form")
+        input#name(type="text", name="name", placeholder="Your First and Last name")
+        input#username(type="text", name="username", placeholder="Username")
+        input#user-email(type="email", name="user-email", placeholder="Email Address")
+        input#user-password(type="password", name="user-password", placeholder="Password")
+        button(type="submit") Submit
 
 //- mixin character-form 
 //-     form(action="/characters", method="post" class!=attributes.class)
@@ -38,10 +58,10 @@ mixin monsters-list
     for monster in monsters
       include ./monster.pug 
 
-//- mixin users-list 
-//-   div(class='users-list-container')
-//-     for user in users 
-//-       include ./user.pug 
+mixin users-list 
+  div(class='users-list-container')
+    for user in users 
+      include ./user.pug 
 
 //- mixin characters-list 
 //-   div(class='characters-list-container')

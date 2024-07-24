@@ -3,10 +3,10 @@ extends layouts/main-layout.pug
 block content_authenticatedNav
   if authenticated
     li(class='nav-link') 
-      a(href="/logout") Logout
+      a(href="/api/users/logout") Logout
   else
     li(class='nav-link') 
-      a(href="/login") Login  
+      a(href="/api/users/login") Login  
 block content
   section
     if dungeon

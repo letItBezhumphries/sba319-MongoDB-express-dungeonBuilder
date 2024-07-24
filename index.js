@@ -15,6 +15,7 @@ connectDB();
 const Monster = require('./models/Monster');
 
 /** define Routes */
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const characterRoutes = require('./routes/characters');
 const dungeonRoutes = require('./routes/dungeons');
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
 /** Wiring in route handlers */
+app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/characters', characterRoutes);
 app.use('/api/dungeons', dungeonRoutes);

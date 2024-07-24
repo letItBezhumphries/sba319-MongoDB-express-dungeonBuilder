@@ -72,10 +72,16 @@ head
         color: lightpink;
       }
 
+      .main-page-header {
+        text-align: center;
+      }
+
+
       #app {
         display: flex;
         justify-content: space-evenly;
         height: 90%;
+        margin-top: 30px;
       }
 
       .user-form {
@@ -90,6 +96,50 @@ head
 
       .user-form input {
         margin-bottom: 30px;
+      }
+
+      .dungeons-list-container,
+      .characters-list-container
+       {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .dungeon-card {
+        margin-bottom: 30px;
+        width: 100%;
+        border: .8px solid var(--jet);
+      }
+
+      .dungeon-card tr:not(:last-of-type) td:last-of-type {
+        text-align: left;
+      }
+
+      .dungeon-card tr:last-of-type {
+        height: 60%;
+        background-color: beige;
+      }
+
+      .dungeon-card tr:last-of-type td:last-of-type {
+        display: flex;
+        flex-direction: row;
+        
+      }
+
+      .dungeon-card td {
+        text-align: center;
+        margin-bottom: 2px;
+      }
+
+      .dungeon-card td:first-of-type {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .monster-card-tinyimg {
+        width: 75px;
+        height: 75px;
       }
 
       .monster-list-container {
@@ -292,16 +342,30 @@ head
         height: 85vh;
       }
 
-      .characters-list-container {
-      }
+
 
       .character-view {
-        background-color: beige;
+        
         width: 80%;
-        height: 85vh;
+
         display: flex;
         flex-direction: column;
+        align-items: center;
+        border: .8px solid var(--jet);
+        margin-bottom: 40px;
       }
+
+      .character-view img {
+        height: 50%;
+        width: 50%;
+      }
+
+      .character-view table {
+        background-color: plum;
+        width: 80%;
+        margin-top: 20px;
+      }
+
 
       .character-vitals {
         height: 100px;

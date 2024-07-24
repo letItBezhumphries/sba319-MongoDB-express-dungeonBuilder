@@ -8,7 +8,7 @@ const Character = require('../models/Character');
 // @access   Public
 const getCharacters = async (req, res, next) => {
   try {
-    const characters = await Character.find({});
+    const characters = await Character.find({}).populate('userId');
     console.log('GET all characters:', characters);
 
     if (characters) {
@@ -32,7 +32,7 @@ const getCharacterById = async (req, res, next) => {
   try {
     const { chrId } = req.params;
 
-    const character = await Character.findById(chrId);
+    const character = await Character.findById(chrId).populate('userId');
 
     if (character) {
       // res.status(200).json(character);
@@ -92,7 +92,7 @@ const updateCharacter = async (req, res, next) => {
   try {
     const { chrId } = req.params;
     const { name, gender, class_type, age, hit_points, img } = req.body;
-    const character = await Character.findById(chrId);
+    const character = await Character.findById(chrId).populate('userId');
     console.log('PUT route update character by id:', character);
     // check if character was found
     if (character) {
@@ -124,7 +124,7 @@ const deleteCharacter = async (req, res, next) => {
   try {
     const { chrId } = req.params;
 
-    const character = await Character.findById(chrId);
+    const character = await Character.findById(chrId).populate('userId');
 
     if (character) {
       await character.remove();
