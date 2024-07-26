@@ -8,10 +8,16 @@ block content_authenticatedNav
     li(class='nav-link') 
       a(href="/api/users/login") Login  
 block content
-  section
-    if users
-      ul
-        for user in users
-          li=user
+  if users
+  div#app
+    div(class="users-list-container")
+      h2(class="list-header") Other D&D Player Profiles  
+      each user in users
+        table(class="user-card") 
+          tr
+            td Username: 
+            td #{ user.username }
+
+
     
 

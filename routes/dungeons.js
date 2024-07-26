@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-/* require in Dungeon Model */
+/* require in Dungeon Controllers */
 const {
   getDungeons,
   getDungeonById,
@@ -9,6 +9,8 @@ const {
   updateDungeon,
   deleteDungeon,
 } = require('../controllers/dungeonController');
+
+const auth = require('../middleware/authMiddleware');
 
 router.get('/', getDungeons);
 router

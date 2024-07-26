@@ -7,7 +7,7 @@ const getMonsters = async (req, res, next) => {
   try {
     const monsters = await Monster.find({});
 
-    console.log('in getMonsters controller', monsters[0]);
+    console.log('in getMonsters controller', monsters);
 
     if (monsters) {
       res.status(200).render('monsters', {

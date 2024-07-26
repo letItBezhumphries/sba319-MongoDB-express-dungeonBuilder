@@ -1,5 +1,9 @@
-const { faker } = require('@faker-js/faker');
-// need to require in any auth middleware
+const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const generateToken = require('../utility/generateToken');
+require('dotenv').config();
+const { validationResult } = require('express-validator');
 
 /* models */
 const User = require('../models/User');
@@ -16,11 +20,12 @@ const getUsers = async (req, res, next) => {
 
     console.log('GET all users in user controller:', users);
     if (users) {
-      res.status(200).render('users', {
-        page_title: 'Users',
-        url: req.url,
-        users: users,
-      });
+      // res.status(200).render('users', {
+      //   page_title: 'Users',
+      //   url: req.url,
+      //   users: users,
+      // });
+      res.status(200).json(users);
     } else {
       next();
     }
@@ -44,18 +49,22 @@ const getUserById = async (req, res, next) => {
     let usersDungeons = await Dungeon.find({ userId: id });
     console.log('in GET user by id -> dungeons by user:', usersDungeons);
     if (user) {
-      // res.status(200).json(user[0]);
-      res.status(200).render('users', {
-        page_title: `${user.username}'s Profile`,
-        users: {
-          ...user,
-          characters: usersCharacters,
-          dungeons: usersDungeons,
-        },
-        authenticated: true,
-        // characters: usersCharacters,
-        // dungeons: usersDungeons,
+      res.status(200).json({
+        ...user,
+        characters: usersCharacters,
+        dungeons: usersDungeons,
       });
+      // res.status(200).render('users', {
+      //   page_title: `${user.username}'s Profile`,
+      //   users: {
+      //     ...user,
+      //     characters: usersCharacters,
+      //     dungeons: usersDungeons,
+      //   },
+      //   authenticated: true,
+      //   // characters: usersCharacters,
+      //   // dungeons: usersDungeons,
+      // });
     } else {
       next();
     }
@@ -67,35 +76,80 @@ const getUserById = async (req, res, next) => {
 // @route    POST /api/users
 // @desc     creates a new user
 // @access   should be private
-const createNewUser = async (req, res, next) => {
-  try {
-    const { name, username, email, password, avatar } = req.body;
+const createNewUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
 
+  const { name, username, email, password } = req.body;
+
+  try {
+    // make sure user doesn't already exist
+    let user = await User.findOne({ email });
+
+    if (user) {
+      return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+    }
+
+    // create and store default avatar for the new user
+    const avatar = gravatar.url(email, {
+      s: '200',
+      r: 'pg',
+      d: 'mm',
+    });
+
+    // create a new user instance
     const newUser = new User({
       name: name,
       username: username,
       email: email,
-      avatar: faker.image.avatar(),
+      avatar: avatar,
       password: password,
     });
 
+    // generate and store a new salt
+    const salt = await bcrypt.genSalt(10);
+
+    // assign the newUser.password to the result of passing the password along with the salt to brcypt.hash method
+    newUser.password = await bcrypt.hash(password, salt);
+
+    // save newUser to the db
     const createdUser = newUser.save();
 
-    if (createdUser) {
-      res.status(201).render('user', {
-        page_title: `${createdUser.username}'s Profile`,
-        user: {
-          username: newUser.username,
-          email: newUser.email,
-          avatar: newUser.avatar,
-        },
-        authenticated: true,
-      });
-    } else {
-      next();
-    }
+    // create a payload to send
+    const payload = {
+      user: {
+        id: newUser.id,
+      },
+    };
+
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: 360000 },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
+
+    // if (createdUser) {
+    //   res.status(201).render('user', {
+    //     page_title: `${createdUser.username}'s Profile`,
+    //     user: {
+    //       username: newUser.username,
+    //       email: newUser.email,
+    //       avatar: newUser.avatar,
+    //     },
+    //     authenticated: true,
+    //   });
+    // } else {
+    //   next();
+    // }
   } catch (error) {
-    console.error('error', error);
+    console.error('error', error.message);
+    res.status(500).send('Server error');
   }
 };
 

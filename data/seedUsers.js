@@ -1,4 +1,5 @@
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
 
 const userCount = 10;
@@ -13,7 +14,7 @@ function createRandomUsers(count) {
       username: faker.internet.userName(),
       email: faker.internet.email(),
       avatar: faker.image.avatar(),
-      password: faker.internet.password(),
+      password: bcrypt.hashSync(faker.internet.password(), 10),
     });
 
     count--;
