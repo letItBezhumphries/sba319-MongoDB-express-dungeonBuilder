@@ -40,11 +40,12 @@ const getDungeonById = async (req, res, next) => {
     console.log('in GET dungeon by id:', dungeon);
 
     if (dungeon) {
-      res.status(200).render('dungeon', {
-        page_title: `${dungeon.dungeon_name} details`,
-        dungeon: dungeon,
-        authenticated: true,
-      });
+      // res.status(200).render('dungeon', {
+      //   page_title: `${dungeon.dungeon_name} details`,
+      //   dungeon: dungeon,
+      //   authenticated: true,
+      // });
+      res.status(200).json(dungeon);
     } else {
       next();
     }
@@ -73,11 +74,12 @@ const createNewDungeon = async (req, res, next) => {
     const createdDungeon = await newDungeon.save();
 
     if (createdDungeon) {
-      res.status(201).render('dungeon', {
-        page_title: `${createdDungeon.dungeon_name} has been discovered!`,
-        authenticated: true,
-        dungeon: createdDungeon,
-      });
+      // res.status(201).render('dungeon', {
+      //   page_title: `${createdDungeon.dungeon_name} has been discovered!`,
+      //   authenticated: true,
+      //   dungeon: createdDungeon,
+      // });
+      res.status(201).json(createdDungeon);
     } else {
       next();
     }
@@ -106,12 +108,12 @@ const updateDungeon = async (req, res, next) => {
       dungeon.monsters = monsters;
 
       const updatedDungeon = await dungeon.save();
-      res.status(203).render('dungeon', {
-        page_title: `${updatedDungeon.dungeon_name} has been updated!`,
-        authenticated: true,
-        dungeon: updatedDungeon,
-      });
-      // res.json(updatedProduct);
+      // res.status(203).render('dungeon', {
+      //   page_title: `${updatedDungeon.dungeon_name} has been updated!`,
+      //   authenticated: true,
+      //   dungeon: updatedDungeon,
+      // });
+      res.status(203).json(updatedDungeon);
     } else {
       next();
     }
@@ -132,11 +134,12 @@ const deleteDungeon = async (req, res, next) => {
 
     if (dungeon) {
       await dungeon.remove();
-      res.status(204).render('dungeon', {
-        page_title: `${dungeon.dungeon_name} has been deleted!`,
-        authenticated: true,
-        dungeon: dungeon,
-      });
+      // res.status(204).render('dungeon', {
+      //   page_title: `${dungeon.dungeon_name} has been deleted!`,
+      //   authenticated: true,
+      //   dungeon: dungeon,
+      // });
+      res.status(204).json(dungeon);
     } else {
       next();
     }
